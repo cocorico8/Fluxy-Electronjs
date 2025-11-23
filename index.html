@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fluxy Repacks - v0.1</title>
+    <title>Fluxy Repacks - v0.2</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -90,6 +90,22 @@
                 <div class="content-section">
                     <div class="patch-note-card">
                         <div class="patch-header">
+                            <h3>Version 0.2</h3>
+                            <span class="date">November 22, 2025</span>
+                        </div>
+                        <ul class="patch-list">
+                            <li>🤖 Added intelligent AI agent assistant</li>
+                            <li>🌍 Multi-language support (English/French)</li>
+                            <li>🔍 Advanced game search via agent</li>
+                            <li>📊 Genre-based browsing</li>
+                            <li>⚠️ Broken link reporting system</li>
+                            <li>💡 Game suggestion feature</li>
+                            <li>🎯 Quick access to top games</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div class="patch-note-card">
+                        <div class="patch-header">
                             <h3>Version 0.1.1</h3>
                             <span class="date">November 17, 2025</span>
                         </div>
@@ -129,7 +145,7 @@
                 <div class="content-section about-content">
                     <div class="about-icon">🎮</div>
                     <h1>Fluxy Repacks</h1>
-                    <p class="version">Version 0.1.1</p>
+                    <p class="version">Version 0.2</p>
                     
                     <div class="about-section">
                         <h3>Description</h3>
@@ -139,6 +155,7 @@
                     <div class="about-section">
                         <h3>Features</h3>
                         <ul class="features-list">
+                            <li>🤖 AI-powered assistant</li>
                             <li>📋 Complete game list with search</li>
                             <li>ℹ️ Full details and screenshots</li>
                             <li>⬇️ Direct download links</li>
@@ -164,7 +181,46 @@
         </main>
     </div>
 
+    <!-- Agent Widget -->
+    <div id="agent-widget" class="agent-widget">
+        <button id="agent-toggle" class="agent-toggle" title="Open Assistant">
+            🤖
+        </button>
+        
+        <div id="agent-panel" class="agent-panel">
+            <div class="agent-header">
+                <h3>🤖 Assistant</h3>
+                <button id="agent-close" class="agent-close-btn">✕</button>
+            </div>
+            
+            <!-- Language Selection -->
+            <div id="lang-selection" class="lang-selection">
+                <h4>Choose your language / Choisissez votre langue</h4>
+                <div class="lang-buttons">
+                    <button class="lang-btn" data-lang="en">
+                        🇬🇧 English
+                    </button>
+                    <button class="lang-btn" data-lang="fr">
+                        🇫🇷 Français
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Agent Content -->
+            <div id="agent-content" class="agent-content" style="display: none;">
+                <div id="agent-messages" class="agent-messages"></div>
+                
+                <div id="agent-options" class="agent-options"></div>
+                
+                <div id="agent-input-area" class="agent-input-area" style="display: none;">
+                    <input type="text" id="agent-input" placeholder="Type here..." />
+                    <button id="agent-send" class="agent-send-btn">Send</button>
+                    <button id="agent-back" class="agent-back-btn">← Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="renderer.js"></script>
 </body>
-
 </html>

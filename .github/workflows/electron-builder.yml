@@ -1,43 +1,42 @@
 name: Build Electron App
-
 on:
   push:
     branches: [ "main" ]
-
 jobs:
   build:
     runs-on: ${{ matrix.os }}
-
     strategy:
       matrix:
         os: [ windows-latest, macos-latest, ubuntu-latest ]
-
     steps:
       - name: Check out git repository
         uses: actions/checkout@v4
-
+      
       - name: Install pnpm
         uses: pnpm/action-setup@v3
-
+      
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: '.node-version'
           cache: 'pnpm'
-
+      
       - name: Install dependencies
         run: pnpm install
-
-      - name: Build application
-        run: |
-          if [ "$RUNNER_OS" == "Windows" ]; then
-            pnpm run build:win
-          elif [ "$RUNNER_OS" == "macOS" ]; then
-            pnpm run build:mac
-          elif [ "$RUNNER_OS" == "Linux" ]; then
-            pnpm run build:linux
-          fi
-
+      
+      - name: Build application (Windows)
+        if: runner.os == 'Windows'
+        run: pnpm run build:win
+        shell: bash
+      
+      - name: Build application (macOS)
+        if: runner.os == 'macOS'
+        run: pnpm run build:mac
+      
+      - name: Build application (Linux)
+        if: runner.os == 'Linux'
+        run: pnpm run build:linux
+      
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
